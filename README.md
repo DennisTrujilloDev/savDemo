@@ -6,3 +6,7 @@ Tech Stack:
 HTML, CSS, MongoDB, Node.js, Express
 
 MongoDB is used to save messages posted onto the message board, as well as the number of likes the post has. This information is retrieved from the database and updated via CRUD whenever the thumbs up or thumbs down icon is clicked. 
+
+What learned:
+
+I practiced using Express and all four CRUD methods (get, post, put, delete). 
