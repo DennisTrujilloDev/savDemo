@@ -9,4 +9,4 @@ MongoDB is used to save messages posted onto the message board, as well as the n
 
 # <strong>Lesson Learned:</strong>
 
-I practiced using Express and all four CRUD methods (get, post, put, delete). 
+I focused on and learned about updating the Mongo database through filtering the data with different methods. 
