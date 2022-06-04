@@ -31,19 +31,19 @@ app.get('/', (req, res) => {
 })
 
 app.post('/messages', (req, res) => {
-  db.collection('savDemoCol').insertOne({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+  db.collection('savDemoCol').insertOne({name: req.body.name, msg: req.body.msg, thumbUp: 0}, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
     res.redirect('/')
   })
 })
 
-app.put('/thumbsUp', (req, res) => {
-  console.log(req.body)
+app.put('/messages', (req, res) => {
+  // console.log("BODY IS", req.body, "THUMBS UP", req.body.thumbUp)
   db.collection('savDemoCol')
-  .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+  .findOneAndUpdate({name: req.body.name, msg: req.body.msg }, {
     $set: {
-      thumbUp:req.body.likes + 1
+      thumbUp:req.body.thumbUp + 1
     }
   }, {
     sort: {_id: -1},
@@ -53,12 +53,12 @@ app.put('/thumbsUp', (req, res) => {
     res.send(result)
   })
 })
+
 app.put('/thumbsDown', (req, res) => {
-  console.log(req.body)
   db.collection('savDemoCol')
   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
     $set: {
-      thumbUp:req.body.likes - 1
+      thumbUp:req.body.thumbUp - 1
     }
   }, {
     sort: {_id: -1},

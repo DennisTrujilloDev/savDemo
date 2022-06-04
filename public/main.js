@@ -1,19 +1,23 @@
 const thumbUp = document.getElementsByClassName("fa-thumbs-up");
 const trash = document.getElementsByClassName("fa-trash");
 const thumbDown = document.getElementsByClassName('fa-thumbs-down')
+
+
 Array.from(thumbUp).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
         const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const likes = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('thumbsUp', {
+        const likes = Number(this.parentNode.parentNode.childNodes[5].innerText)
+        // fetch('thumbsUp', {
+          fetch('messages', {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
             'name': name,
             'msg': msg,
-            'likes':likes,
-            'action': 'like'
+            'thumbUp': likes
+            // 'likes':likes,
+            // 'action': 'like'
           })
         })
         .then(response => {
@@ -25,6 +29,8 @@ Array.from(thumbUp).forEach(function(element) {
         })
       });
 });
+
+
 Array.from(thumbDown).forEach(function(element) {
   element.addEventListener('click', function(){
     const name = this.parentNode.parentNode.childNodes[1].innerText
@@ -36,8 +42,7 @@ Array.from(thumbDown).forEach(function(element) {
       body: JSON.stringify({
         'name': name,
         'msg': msg,
-        'likes': likes,
-        'action': 'dislike'
+        'thumbUp': likes,
       })
     })
     .then(response => {
@@ -49,6 +54,8 @@ Array.from(thumbDown).forEach(function(element) {
     })
   });
 });
+
+
 Array.from(trash).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText

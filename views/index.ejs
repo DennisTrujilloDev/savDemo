@@ -9,8 +9,15 @@
 </head>
 <body>
   <h1>21 Savage</h1>
-  <h2>Why you trappin so hard?</h2>
+  <h5>Why you trappin so hard?</h5>
 
+  <h2>Add a message</h2>
+
+  <form action="/messages" method="POST" >
+    <input type="text" placeholder="name" name="name" id="forMy">
+    <input type="text" placeholder="message" name="msg" id="forYour">
+    <button type="submit">Submit</button>
+  </form>
 
   <h3>Messages</h3>
   <ul class="messages">
@@ -26,13 +33,6 @@
   <% } %>
   </ul>
 
-  <h2>Add a message</h2>
-
-  <form action="/messages" method="POST">
-    <input type="text" placeholder="name" name="name">
-    <input type="text" placeholder="message" name="msg">
-    <button type="submit">Submit</button>
-  </form>
 
   <script src="main.js"></script>
 
